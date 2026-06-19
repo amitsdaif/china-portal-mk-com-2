@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://amitsdaif.github.io/china-portal-mk-com-2/sitemap.xml

@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>信息索引 · mk体育</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f7f3eb;
+            font-family: 'Georgia', 'Times New Roman', 'Songti SC', serif;
+            color: #2c2b28;
+            line-height: 1.7;
+            padding: 2rem 1.5rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .container {
+            background: rgba(255, 250, 240, 0.7);
+            padding: 2.5rem 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+            backdrop-filter: blur(2px);
+        }
+
+        /* 开场短句 —— 似卷首语 */
+        .opening {
+            font-size: 1.15rem;
+            letter-spacing: 0.05em;
+            border-left: 3px solid #b8a28c;
+            padding-left: 1.2rem;
+            margin-bottom: 2rem;
+            color: #4a3f35;
+            font-style: italic;
+        }
+
+        .opening em {
+            color: #7c5f4a;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            font-weight: 400;
+            letter-spacing: 0.06em;
+            margin-top: 0.2rem;
+            margin-bottom: 0.25rem;
+            color: #3b332b;
+            border-bottom: 1px solid #d9cdbc;
+            padding-bottom: 0.6rem;
+        }
+
+        .subhead {
+            font-size: 0.9rem;
+            color: #7c6f60;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        /* 承接段落 */
+        p {
+            margin-bottom: 1.3rem;
+            text-align: justify;
+            word-spacing: 0.02em;
+        }
+
+        .intro-quote {
+            background-color: #ede6db;
+            padding: 1.2rem 1.5rem;
+            margin: 1.8rem 0 2rem 0;
+            border-radius: 6px;
+            border-left: 5px solid #b0947a;
+            font-size: 0.98rem;
+            color: #3c352e;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.02);
+        }
+
+        .intro-quote p {
+            margin-bottom: 0.5rem;
+        }
+
+        .intro-quote p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* 特点列表 — 温和的索引感 */
+        .feature-list {
+            margin: 2.2rem 0 2.5rem 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .feature-list li {
+            margin-bottom: 1rem;
+            padding: 0.8rem 1rem 0.8rem 1.6rem;
+            background: #faf6f0;
+            border-radius: 6px;
+            border-bottom: 1px solid #e3d9ce;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .feature-list li::before {
+            content: "·";
+            position: absolute;
+            left: 0.6rem;
+            color: #9d8876;
+            font-weight: bold;
+            font-size: 1.4rem;
+        }
+
+        .feature-list strong {
+            color: #5b4a3b;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+        }
+
+        /* 温和的提示框 */
+        .gentle-note {
+            background: #eae2d6;
+            padding: 1.2rem 1.5rem;
+            border-radius: 10px;
+            margin: 2rem 0 1.8rem 0;
+            border: 1px solid #d1c3b3;
+            font-size: 0.95rem;
+        }
+
+        .gentle-note span {
+            display: inline-block;
+            background: #c8b7a4;
+            color: #2d2822;
+            font-size: 0.75rem;
+            padding: 0.15rem 0.7rem;
+            border-radius: 30px;
+            margin-right: 0.4rem;
+            letter-spacing: 0.06em;
+            font-family: 'Helvetica Neue', sans-serif;
+        }
+
+        /* 链接风格：自然融入句子 */
+        a {
+            color: #6f563d;
+            text-decoration: none;
+            border-bottom: 1px dotted #b7a187;
+            padding-bottom: 1px;
+            transition: border 0.2s, background 0.2s;
+        }
+
+        a:hover {
+            border-bottom: 1px solid #6f563d;
+            background: #efe5d9;
+            padding: 0 2px;
+        }
+
+        /* FAQ 摘要 */
+        .faq-mini {
+            margin: 2.5rem 0 1rem 0;
+            border-top: 1px solid #ddd0c0;
+            padding-top: 1.8rem;
+        }
+
+        .faq-mini details {
+            margin-bottom: 0.8rem;
+            padding: 0.5rem 0.8rem;
+            background: #f4ede4;
+            border-radius: 6px;
+        }
+
+        .faq-mini summary {
+            cursor: pointer;
+            font-weight: 500;
+            color: #4d3f33;
+            padding: 0.25rem 0;
+            list-style: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .faq-mini summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .faq-mini summary::before {
+            content: "▸";
+            margin-right: 0.6rem;
+            color: #a58f7a;
+            transition: transform 0.2s;
+        }
+
+        .faq-mini details[open] summary::before {
+            transform: rotate(90deg);
+        }
+
+        .faq-mini details p {
+            margin: 0.5rem 0 0.2rem 1.5rem;
+            font-size: 0.95rem;
+            color: #3f382f;
+        }
+
+        /* 温和结尾 */
+        .closing {
+            margin-top: 2.8rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #d9cdbc;
+            font-size: 0.95rem;
+            color: #645a4e;
+            text-align: left;
+            letter-spacing: 0.02em;
+        }
+
+        .closing a {
+            border-bottom: 1px solid #baa68c;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #e7ddd2;
+            margin: 2rem 0 1.2rem 0;
+            opacity: 0.6;
+        }
+
+        /* 响应式细节 */
+        @media (max-width: 600px) {
+            body {
+                padding: 1.2rem 1rem;
+            }
+
+            .container {
+                padding: 1.8rem 1rem;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            .opening {
+                font-size: 1rem;
+                padding-left: 0.9rem;
+            }
+
+            .feature-list li {
+                padding: 0.7rem 0.8rem 0.7rem 1.4rem;
+            }
+
+            .intro-quote {
+                padding: 1rem 1.2rem;
+            }
+
+            .gentle-note {
+                padding: 1rem 1.2rem;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .opening {
+                font-size: 0.95rem;
+            }
+
+            .faq-mini details p {
+                margin-left: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- 开场短句 -->
+    <div class="opening">
+        <em>在信息密集的体育世界里，</em> 一份安静的索引，比弹窗更持久。
+    </div>
+
+    <h1>mk体育 · 资料整理手记</h1>
+    <div class="subhead">从赛事数据到内容脉络</div>
+
+    <!-- 承接段落：从资料索引角度展开 -->
+    <p>
+        体育资料的整理，往往比观赛本身更考验耐心。在长期跟进各类赛事信息的过程中，逐渐形成了一套以「分类 · 聚合 · 时间线」为核心的笔记体系。这个站点最初只是一份私人文件夹，后来慢慢变成了可以共享的内容索引。如果你也习惯从比赛记录、选手动向和赛季数据中寻找脉络，那么这里或许能补充一些视角。
+    </p>
+    <p>
+        信息的价值不在于堆叠，而在于被需要的时候恰好出现。整个整理逻辑围绕简洁目录展开：联赛、杯赛、青训、转会、历史档案——每一块都只收录经过核对的公开来源与基础统计，不追求抢先，但尽量保持准确。偶尔也会加入一些背景阅读，帮助理解赛场上下的脉络。
+    </p>
+
+    <!-- 引用块 / 提示框风格 承接特点 -->
+    <div class="intro-quote">
+        <p>站点并非新闻源，也不做实时比分推送。它更像一个安静的资料台，把分散在赛季中的碎片重新归位。</p>
+        <p>如果你也在寻找某个赛季的阵容列表，或者想回顾某支球队的近年转会轨迹，不妨从这里开始翻一翻。</p>
+    </div>
+
+    <!-- 特点列表 — 温和的索引感 -->
+    <ul class="feature-list">
+        <li><strong>赛事档案</strong> —— 五大联赛、欧冠、亚冠及部分次级联赛的基础赛季资料，按年份与轮次整理。</li>
+        <li><strong>球员/教练笔记</strong> —— 非百科式条目，更偏向职业生涯阶段的关键赛果与转会节点。</li>
+        <li><strong>青训与预备队</strong> —— 容易被忽视的梯队信息，包含部分青年联赛的积分与出场统计。</li>
+        <li><strong>历史专题</strong> —— 经典赛季复盘、纪录变迁与战术风格简记，适合安静翻阅。</li>
+        <li><strong>内容索引</strong> —— 所有条目均标注原始出处，方便交叉验证，不做二次创作式解读。</li>
+    </ul>
+
+    <!-- 场景提示框：温和的用途说明 -->
+    <div class="gentle-note">
+        <span>📋 使用场景</span> 查询往季阵容、对比转会窗操作、梳理教练更迭时间线、查找某位球员的租借经历——每一项都基于公开数据整理，适合做进一步研究前的起点参照。
+    </div>
+
+    <!-- FAQ 摘要形式，但内容自然 -->
+    <div class="faq-mini">
+        <details>
+            <summary>资料收录的范围？</summary>
+            <p>目前以欧洲主流联赛及亚洲部分联赛的2000年之后信息为主，少量涉及90年代经典赛季。内容以表格和短记为载体，不包含实时数据。</p>
+        </details>
+        <details>
+            <summary>能否参与补充或纠错？</summary>
+            <p>非常欢迎。页面底部有联系方式（暂未开放），或者你可以在对应条目下留言。所有更正都会在核实后更新，并注明贡献者。</p>
+        </details>
+        <details>
+            <summary>与 <a href="https://china-portal-mk.com">mk体育</a> 是什么关系？</summary>
+            <p>该站点是整体内容计划中的一部分。更多跨赛季的整合内容，可以在 <a href="https://china-portal-mk.com">mk体育</a> 中找到延续阅读的入口。</p>
+        </details>
+    </div>
+
+    <!-- 温和结尾 -->
+    <div class="closing">
+        索引不是终点，而是寻找的起点。<br>
+        如果你对某条记录感兴趣，或者想看看更完整的赛季档案，<a href="https://china-portal-mk.com">mk体育</a> 里还有持续整理中的内容。<br>
+        希望这份手记能为你节省一些翻找的时间。
+    </div>
+
+    <hr>
+    <div style="font-size: 0.85rem; color: #8a7c6d; text-align: left; margin-top: 0.3rem;">
+        · 资料整理项目 · 持续更新 ·
+    </div>
+
+</div>
+</body>
+</html>
